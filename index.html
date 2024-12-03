@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surjo's Domain</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: #ff5733;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .rainbow-box {
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .rainbow-box a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .rainbow-box a:hover {
+            color: #ff9a9e;
+        }
+
+        .form-box, .personal-details, .feedback-box {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-box h2, .feedback-box h2 {
+            color: #ff5733;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .form-box input, .feedback-box textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #f6d365;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-box input:focus, .feedback-box textarea:focus {
+            border-color: #ff5733;
+            outline: none;
+        }
+
+        .form-box button, .feedback-box button {
+            background: #ff5733;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .form-box button:hover, .feedback-box button:hover {
+            background: #e64e21;
+            transform: scale(1.05);
+        }
+
+        .personal-details .details-section {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-size: 18px;
+            color: #444;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .personal-details {
+            display: none; /* Hidden by default */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                font-size: 22px;
+                padding: 15px;
+            }
+
+            .rainbow-box a {
+                font-size: 16px;
+            }
+
+            .form-box input, .feedback-box textarea {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .form-box button, .feedback-box button {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+
+            .personal-details .details-section {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        Welcome to Surjo's Domain
+    </header>
+
+    <div class="container">
+        <div class="rainbow-box">
+            Follow me on Instagram: <a href="https://www.instagram.com/s4dx_._" target="_blank">s4dx_._</a>
+        </div>
+
+        <div class="form-box">
+            <h2>Enter Your Details</h2>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <input type="text" id="number" placeholder="Your Phone Number" required>
+            <input type="text" id="instagram" placeholder="Your Instagram ID" required>
+            <input type="date" id="dob" required>
+            <button onclick="submitForm()">Submit</button>
+        </div>
+
+        <div class="personal-details" id="personalDetails">
+            <div class="details-section">My Name - Swastick Das (Prince of your dreams 😉)</div>
+            <div class="details-section">Nickname - Prince, Surjo, Baby (just for you, babydoll 😗)</div>
+            <div class="details-section" id="ageSection">Age - </div>
+            <div class="details-section">State - West Bengal</div>
+            <div class="details-section">City - Kolkata</div>
+            <div class="details-section">Hobbies - Cooking, Riding Bikes, Driving Cars, Gardening, Playing Guitar</div>
+        </div>
+
+        <div class="feedback-box">
+            <h2>Feedback</h2>
+            <textarea id="feedback" placeholder="Share your experience..."></textarea>
+            <button onclick="submitFeedback()">Submit Feedback</button>
+        </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const number = document.getElementById("number").value;
+            const instagram = document.getElementById("instagram").value;
+            const dob = document.getElementById("dob").value;
+
+            if (name && email && number && instagram && dob) {
+                document.querySelector(".form-box").style.display = "none"; // Hide form box
+                document.getElementById("ageSection").textContent = "Age - 18 (Age is just a number, sweetheart! 🙈)";
+                document.getElementById("personalDetails").style.display = "block"; // Show personal details
+            } else {
+                alert("Please fill in all the fields.");
+            }
+        }
+
+        function submitFeedback() {
+            const feedback = document.getElementById("feedback").value;
+            if (feedback) {
+                alert("Thank you for your feedback!");
+            } else {
+                alert("Please enter feedback.");
+            }
+        }
+    </script>
+
+</body>
+</html>
